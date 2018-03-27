@@ -163,28 +163,25 @@ int main()
 #include <iostream>
 using namespace std;
  
+#include <iomanip>
+using std::setw;
+ 
 int main ()
 {
-   // 数字定义
-   short  s;
-   int    i;
-   long   l;
-   float  f;
-   double d;
-   
-   // 数字赋值
-   s = 10;      
-   i = 1000;    
-   l = 1000000; 
-   f = 230.47;  
-   d = 30949.374;
-   
-   // 数字输出
-   cout << "short  s :" << s << endl;
-   cout << "int    i :" << i << endl;
-   cout << "long   l :" << l << endl;
-   cout << "float  f :" << f << endl;
-   cout << "double d :" << d << endl;
+   int n[ 10 ]; // n 是一个包含 10 个整数的数组
+ 
+   // 初始化数组元素          
+   for ( int i = 0; i < 10; i++ )
+   {
+      n[ i ] = i + 100; // 设置元素 i 为 i + 100
+   }
+   cout << "Element" << setw( 13 ) << "Value" << endl;
+ 
+   // 输出数组中每个元素的值                     
+   for ( int j = 0; j < 10; j++ )
+   {
+      cout << setw( 7 )<< j << setw( 13 ) << n[ j ] << endl;
+   }
  
    return 0;
 }
@@ -236,3 +233,94 @@ int main ()
    return 0;
 }
 ==================================================================================================================================
+#include <iostream>
+ 
+using namespace std;
+ 
+// 基类
+class Shape 
+{
+public:
+   // 提供接口框架的纯虚函数
+   virtual int getArea() = 0;
+   void setWidth(int w)
+   {
+      width = w;
+   }
+   void setHeight(int h)
+   {
+      height = h;
+   }
+protected:
+   int width;
+   int height;
+};
+ 
+// 派生类
+class Rectangle: public Shape
+{
+public:
+   int getArea()
+   { 
+      return (width * height); 
+   }
+};
+class Triangle: public Shape
+{
+public:
+   int getArea()
+   { 
+      return (width * height)/2; 
+   }
+};
+ 
+int main(void)
+{
+   Rectangle Rect;
+   Triangle  Tri;
+ 
+   Rect.setWidth(5);
+   Rect.setHeight(7);
+   // 输出对象的面积
+   cout << "Total Rectangle area: " << Rect.getArea() << endl;
+ 
+   Tri.setWidth(5);
+   Tri.setHeight(7);
+   // 输出对象的面积
+   cout << "Total Triangle area: " << Tri.getArea() << endl; 
+ 
+   return 0;
+}
+===============================================================
+[可见度] interface 接口名称 [extends 其他的类名] {
+        // 声明变量
+        // 抽象方法
+}
+/* 文件名 : NameOfInterface.java */
+import java.lang.*;
+//引入包
+ 
+public interface NameOfInterface
+{
+   //任何类型 final, static 字段
+   //抽象方法
+}
+/* 文件名 : Animal.java */
+interface Animal {
+   public void eat();
+   public void travel();
+}
+=================================================================
+void recursion()
+{
+   statements;
+   ... ... ...
+   recursion(); /* 函数调用自身 */
+   ... ... ...
+}
+ 
+int main()
+{
+   recursion();
+}
+==========================================================================================================================
