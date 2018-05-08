@@ -16,7 +16,7 @@ void ShowMessage()
 }
 void ShowAge()
 {
-	int iAge=23;
+	int iAge=19;
 	cout << "age is :" << iAge << endl;
 }
 void ShowIndex()
